@@ -9,11 +9,9 @@ import { StoreService } from 'src/app/services/store/store.service'
 export class TextContentComponent implements AfterViewInit {
   @ViewChild('textArea') private textAreaRef!: ElementRef
 
-  public globalStore
+  public globalStore = this.storeService.getGlobalStore()
 
-  constructor(private storeService: StoreService) {
-    this.globalStore = this.storeService.globalStore
-  }
+  constructor(private storeService: StoreService) {}
 
   ngAfterViewInit(): void {
     this.textAreaRef.nativeElement.addEventListener('mouseup', () => {

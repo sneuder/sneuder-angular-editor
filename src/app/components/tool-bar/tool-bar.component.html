@@ -1,1 +1,7 @@
-<section></section>
+<section>
+  <app-single-button
+    *ngFor="let singleButtonIns of singleButtonsIns"
+    [instruction]="singleButtonIns"
+    (setStyle)="setEditorStyles($event)"
+  ></app-single-button>
+</section>
