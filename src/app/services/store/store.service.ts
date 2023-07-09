@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core'
 export class StoreService {
   public globalStore = {
     textContent: '',
-    selectedNode: '',
+    selectedNode: '' as any,
   }
 
   public setGlobalStore(globalKey: keyof typeof this.globalStore, globalValue: string) {
