@@ -14,6 +14,8 @@ export class EditorTextService {
     const selected = this.globalStore.selectedNode
     const style = selected.style
 
+    if (!style) return
+
     if (style[styleData.style] === styleData.value) {
       style[styleData.style] = styleData.revert
       return
