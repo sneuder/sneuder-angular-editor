@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { SingleButtonIns } from 'src/app/instructions/single-button.ins'
+
 import StyleSetting from 'src/app/interface/styleSetting.interface'
+import AddSetting from 'src/app/interface/addSetting.interface'
 
 @Component({
   selector: 'app-single-button',
@@ -9,9 +11,9 @@ import StyleSetting from 'src/app/interface/styleSetting.interface'
 })
 export class SingleButtonComponent {
   @Input() instruction!: SingleButtonIns
-  @Output() setStyle = new EventEmitter<StyleSetting>()
+  @Output() setStyle = new EventEmitter<StyleSetting | AddSetting>()
 
   emitSetStyle() {
-    this.setStyle.emit(this.instruction.styleSetting)
+    this.setStyle.emit(this.instruction.setting)
   }
 }

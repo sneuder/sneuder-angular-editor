@@ -4,7 +4,9 @@ import { StoreService } from 'src/app/services/store/store.service'
 import { EditorTextService } from 'src/app/services/editor-text/editor-text.service'
 
 import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
+
 import StyleSetting from 'src/app/interface/styleSetting.interface'
+import AddSetting from 'src/app/interface/addSetting.interface'
 
 @Component({
   selector: 'app-tool-bar',
@@ -19,8 +21,7 @@ export class ToolBarComponent {
     public editorTextService: EditorTextService,
   ) {}
 
-  public setEditorStyles(styleSetting: StyleSetting) {
-    const service = styleSetting.service as keyof typeof this.editorTextService
-    this.editorTextService[service](styleSetting)
+  public setEditorStyles(setting: StyleSetting | AddSetting) {
+    this.editorTextService[setting.service](setting as StyleSetting & AddSetting)
   }
 }

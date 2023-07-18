@@ -1,14 +1,15 @@
 import StyleSetting from '../interface/styleSetting.interface'
+import AddSetting from '../interface/addSetting.interface'
 
 export interface SingleButtonIns {
   icon: string
-  styleSetting: StyleSetting
+  setting: StyleSetting | AddSetting
 }
 
 export const singleButtonsIns: SingleButtonIns[] = [
   {
     icon: 'fas fa-bold',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'bold',
       revert: 'normal',
@@ -17,7 +18,7 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-italic',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'italic',
       revert: 'normal',
@@ -26,7 +27,7 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-underline',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'underline',
       revert: 'none',
@@ -35,7 +36,7 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-align-left',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'left',
       revert: 'initial',
@@ -44,7 +45,7 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-align-right',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'right',
       revert: 'initial',
@@ -53,7 +54,7 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-align-center',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'center',
       revert: 'initial',
@@ -62,11 +63,34 @@ export const singleButtonsIns: SingleButtonIns[] = [
   },
   {
     icon: 'fas fa-align-justify',
-    styleSetting: {
+    setting: {
       service: 'setPlainStyle',
       value: 'justify',
       revert: 'initial',
       style: 'textAlign',
+    },
+  },
+  {
+    icon: 'fas fa-highlighter',
+    setting: {
+      service: 'setPlainStyle',
+      value: '#F1E740',
+      revert: 'none',
+      style: 'backgroundColor',
+    },
+  },
+  {
+    icon: 'fas fa-list-ul',
+    setting: {
+      service: 'addElement',
+      insert: '<ul style="list-style-position: inside;"><li></li></ul>',
+    },
+  },
+  {
+    icon: 'fas fa-list-ol',
+    setting: {
+      service: 'addElement',
+      insert: '<ol style="list-style-position: inside;"><li></li></ol>',
     },
   },
 ]

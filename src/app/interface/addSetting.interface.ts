@@ -1,10 +1,8 @@
 import { EditorTextService } from '../services/editor-text/editor-text.service'
 
-interface StyleSetting {
+interface AddSetting {
   service: keyof EditorTextService
-  value: string
-  revert: string
-  style: string
+  insert: string
 }
 
-export default StyleSetting
+export default AddSetting

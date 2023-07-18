@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 import { StoreService } from '../store/store.service'
 
+import StyleSetting from 'src/app/interface/styleSetting.interface'
+import AddSetting from 'src/app/interface/addSetting.interface'
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +13,7 @@ export class EditorTextService {
   constructor(private storeService: StoreService) {}
 
   // style which need just one action to take
-  public setPlainStyle(styleData: any): void {
+  public setPlainStyle(styleData: StyleSetting): void {
     const selected = this.globalStore.selectedNode
     const style = selected.style
 
@@ -22,5 +25,12 @@ export class EditorTextService {
     }
 
     style[styleData.style] = styleData.value
+  }
+
+  // add an element to the text content
+  public addElement(insertData: AddSetting) {
+    let selected = this.globalStore.selectedNode
+    if (selected.firstChild.id === 'sneuder-text-area') selected = selected.firstChild
+    selected.innerHTML += insertData.insert
   }
 }
