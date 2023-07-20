@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 
-import { StoreService } from 'src/app/services/store/store.service'
 import { EditorTextService } from 'src/app/services/editor-text/editor-text.service'
 
 import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
@@ -16,10 +15,7 @@ import AddSetting from 'src/app/interface/addSetting.interface'
 export class ToolBarComponent {
   public singleButtonsIns = singleButtonsIns
 
-  constructor(
-    private storeService: StoreService,
-    public editorTextService: EditorTextService,
-  ) {}
+  constructor(public editorTextService: EditorTextService) {}
 
   public setEditorStyles(setting: StyleSetting | AddSetting) {
     this.editorTextService[setting.service](setting as StyleSetting & AddSetting)
