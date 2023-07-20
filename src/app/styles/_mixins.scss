@@ -1,0 +1,17 @@
+@import './variables';
+
+@mixin button {
+  @include center-flexbox();
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: $tool-bar-button-color;
+  cursor: pointer;
+}
+
+@mixin center-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

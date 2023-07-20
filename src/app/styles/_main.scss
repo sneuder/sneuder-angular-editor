@@ -1,0 +1,5 @@
+@import './mixins';
+
+.tool-bar-button {
+  @include button();
+}
