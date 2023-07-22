@@ -93,4 +93,19 @@ export const singleButtonsIns: SingleButtonIns[] = [
       insert: '<ol style="list-style-position: inside;"><li></li></ol>',
     },
   },
+  // work on this when users select words to add it
+  {
+    icon: 'fas fa-superscript',
+    setting: {
+      service: 'addElement',
+      insert: '<sup>superscript</sup>',
+    },
+  },
+  {
+    icon: 'fas fa-subscript',
+    setting: {
+      service: 'addElement',
+      insert: '<sub>superscript</sub>',
+    },
+  },
 ]
