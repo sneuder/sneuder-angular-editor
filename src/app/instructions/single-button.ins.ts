@@ -93,11 +93,4 @@ export const singleButtonsIns: SingleButtonIns[] = [
       insert: '<ol style="list-style-position: inside;"><li></li></ol>',
     },
   },
-  {
-    icon: 'fas fa-table',
-    setting: {
-      service: 'addElement',
-      insert: '<table style="width:100%"> <tr> <td>Emil</td></tr></table>',
-    },
-  },
 ]

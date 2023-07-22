@@ -4,5 +4,8 @@
     [instruction]="singleButtonIns"
     (setStyle)="setEditorStyles($event)"
   ></app-single-button>
-  <app-modal-button></app-modal-button>
+  <app-modal-button
+    *ngFor="let modalButtonIns of modalButtonsIns"
+    [instruction]="modalButtonIns"
+  ></app-modal-button>
 </section>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
+import { ModalButtonIns } from 'src/app/instructions/modal-button.ins'
 
 @Component({
   selector: 'app-modal-button',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core'
   styleUrls: ['./modal-button.component.scss'],
 })
 export class ModalButtonComponent {
+  @Input() instruction!: ModalButtonIns
+
   public modalState = false
   private timeoutModal: any
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core'
 import { EditorTextService } from 'src/app/services/editor-text/editor-text.service'
 
 import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
+import { modalButtonsIns } from 'src/app/instructions/modal-button.ins'
 
 import StyleSetting from 'src/app/interface/styleSetting.interface'
 import AddSetting from 'src/app/interface/addSetting.interface'
@@ -14,6 +15,7 @@ import AddSetting from 'src/app/interface/addSetting.interface'
 })
 export class ToolBarComponent {
   public singleButtonsIns = singleButtonsIns
+  public modalButtonsIns = modalButtonsIns
 
   constructor(public editorTextService: EditorTextService) {}
 
