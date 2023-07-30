@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core'
 import { StoreService } from '../store/store.service'
 
-import StyleSetting from 'src/app/interface/styleSetting.interface'
-import AddSetting from 'src/app/interface/addSetting.interface'
+import { StyleSetting, AddSetting } from 'src/app/interface/instructions/single-button.interface'
 
 @Injectable({
   providedIn: 'root',

@@ -1,25 +1,54 @@
-import { Component } from '@angular/core'
+import {
+  Component,
+  ComponentFactoryResolver,
+  ViewChild,
+  ViewContainerRef,
+  AfterViewInit,
+} from '@angular/core'
 
 import { EditorTextService } from 'src/app/services/editor-text/editor-text.service'
+import { StoreService } from 'src/app/services/store/store.service'
 
-import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
-import { modalButtonsIns } from 'src/app/instructions/modal-button.ins'
-
-import StyleSetting from 'src/app/interface/styleSetting.interface'
-import AddSetting from 'src/app/interface/addSetting.interface'
+import { SingleButtonSetting } from 'src/app/interface/instructions/single-button.interface'
 
 @Component({
   selector: 'app-tool-bar',
   templateUrl: './tool-bar.component.html',
   styleUrls: ['./tool-bar.component.scss'],
 })
-export class ToolBarComponent {
-  public singleButtonsIns = singleButtonsIns
-  public modalButtonsIns = modalButtonsIns
+export class ToolBarComponent implements AfterViewInit {
+  @ViewChild('buttonsContainer', { read: ViewContainerRef })
+  containerButtons!: ViewContainerRef
 
-  constructor(public editorTextService: EditorTextService) {}
+  private globalStore = this.storeService.getGlobalStore()
+  private buttonsToRender = this.globalStore.setUpSetting.toolBarButtons
 
-  public setEditorStyles(setting: StyleSetting | AddSetting) {
-    this.editorTextService[setting.service](setting as StyleSetting & AddSetting)
+  constructor(
+    private storeService: StoreService,
+    private editorTextService: EditorTextService,
+    private componentFactoryResolver: ComponentFactoryResolver,
+  ) {
+    // binding
+    this.setEditorStyles = this.setEditorStyles.bind(this)
+  }
+
+  ngAfterViewInit(): void {
+    this.renderButtons()
+  }
+
+  private renderButtons() {
+    this.buttonsToRender.forEach((buttonsToRender) => {
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+        buttonsToRender.component,
+      )
+      const componentRef: any = this.containerButtons.createComponent(componentFactory)
+
+      componentRef.instance.instruction = buttonsToRender
+      componentRef.instance.setStyle.subscribe(this.setEditorStyles)
+    })
+  }
+
+  private setEditorStyles(setting: SingleButtonSetting) {
+    this.editorTextService[setting.service](setting as any)
   }
 }

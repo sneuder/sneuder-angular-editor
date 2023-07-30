@@ -1,11 +1,3 @@
 <section class="tool-bar">
-  <app-single-button
-    *ngFor="let singleButtonIns of singleButtonsIns"
-    [instruction]="singleButtonIns"
-    (setStyle)="setEditorStyles($event)"
-  ></app-single-button>
-  <app-modal-button
-    *ngFor="let modalButtonIns of modalButtonsIns"
-    [instruction]="modalButtonIns"
-  ></app-modal-button>
+  <ng-container #buttonsContainer></ng-container>
 </section>

@@ -1,33 +1,43 @@
+import { SingleButtonComponent } from '../shared/buttons/single-button/single-button.component'
+
 export interface ModalButtonIns {
   icon: string
+  component: any
   setting: {
-    component: string
+    values: {
+      value: string
+      content: string
+    }[]
+    style: string
+    service: string
   }
 }
 
 export const modalButtonsIns: ModalButtonIns[] = [
-  {
-    icon: 'fas fa-font',
-    setting: {
-      component: 'sas',
-    },
-  },
+  // {
+  //   icon: 'fas fa-font',
+  //   setting: {},
+  // },
   {
     icon: 'fas fa-text-height',
+    component: SingleButtonComponent,
     setting: {
-      component: 'sas',
+      values: [{ value: '1.0', content: '1.0' }],
+      style: 'line-height',
+      service: 'test',
     },
   },
   {
     icon: 'fas fa-tint',
+    component: SingleButtonComponent,
     setting: {
-      component: 'sas',
+      values: [{ value: '1.0', content: '1.0' }],
+      style: 'line-height',
+      service: 'test',
     },
   },
-  {
-    icon: 'fas fa-table',
-    setting: {
-      component: 'sas',
-    },
-  },
+  // {
+  //   icon: 'fas fa-table',
+  //   setting: {},
+  // },
 ]
