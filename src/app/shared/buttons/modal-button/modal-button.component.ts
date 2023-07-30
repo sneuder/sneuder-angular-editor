@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { ModalButtonIns } from 'src/app/instructions/modal-button.ins'
+import ModalButtonIns from 'src/app/interface/instructions/modal-button.interface'
 
 @Component({
   selector: 'app-modal-button',

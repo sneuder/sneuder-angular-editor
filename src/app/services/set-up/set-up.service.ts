@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core'
 import { StoreService } from '../store/store.service'
 
 import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
+import { modalButtonsIns } from 'src/app/instructions/modal-button.ins'
+import { EditorSettingsIns } from 'src/app/interface/set-up.interface'
 import SetUpSetting, {
   SetUpWorkSpaceDev,
   SetUpInputDev,
@@ -14,7 +16,7 @@ import SetUpSetting, {
   providedIn: 'root',
 })
 export class SetUpService {
-  private groupToolbarIns = [...singleButtonsIns]
+  private groupToolbarIns = [...singleButtonsIns, ...modalButtonsIns] as EditorSettingsIns
 
   private setUpSetting: SetUpSetting = {
     editorSettings: {},

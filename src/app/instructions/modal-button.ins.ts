@@ -1,26 +1,14 @@
-import { SingleButtonComponent } from '../shared/buttons/single-button/single-button.component'
+import { ModalButtonComponent } from '../shared/buttons/modal-button/modal-button.component'
 
-export interface ModalButtonIns {
-  icon: string
-  component: any
-  setting: {
-    values: {
-      value: string
-      content: string
-    }[]
-    style: string
-    service: string
-  }
-}
+import { TextEditorGroupType, TextFormattingSubType } from '../interface/set-up.interface'
+import ModalButtonIns from '../interface/instructions/modal-button.interface'
 
 export const modalButtonsIns: ModalButtonIns[] = [
-  // {
-  //   icon: 'fas fa-font',
-  //   setting: {},
-  // },
   {
     icon: 'fas fa-text-height',
-    component: SingleButtonComponent,
+    type: TextEditorGroupType.TextFormatting,
+    subType: TextFormattingSubType.FontHeight,
+    component: ModalButtonComponent,
     setting: {
       values: [{ value: '1.0', content: '1.0' }],
       style: 'line-height',
@@ -29,15 +17,13 @@ export const modalButtonsIns: ModalButtonIns[] = [
   },
   {
     icon: 'fas fa-tint',
-    component: SingleButtonComponent,
+    type: TextEditorGroupType.TextFormatting,
+    subType: TextFormattingSubType.TextColor,
+    component: ModalButtonComponent,
     setting: {
       values: [{ value: '1.0', content: '1.0' }],
       style: 'line-height',
       service: 'test',
     },
   },
-  // {
-  //   icon: 'fas fa-table',
-  //   setting: {},
-  // },
 ]

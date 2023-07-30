@@ -44,7 +44,10 @@ export class ToolBarComponent implements AfterViewInit {
       const componentRef: any = this.containerButtons.createComponent(componentFactory)
 
       componentRef.instance.instruction = buttonsToRender
-      componentRef.instance.setStyle.subscribe(this.setEditorStyles)
+
+      if (componentRef.instance.setStyle) {
+        componentRef.instance.setStyle.subscribe(this.setEditorStyles)
+      }
     })
   }
 

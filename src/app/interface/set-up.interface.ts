@@ -1,5 +1,5 @@
 import SingleButtonIns from './instructions/single-button.interface'
-
+import ModalButtonIns from './instructions/modal-button.interface'
 // Type
 
 export enum TextEditorGroupType {
@@ -10,8 +10,8 @@ export enum TextEditorGroupType {
   UndoRedo = 'Undo/Redo',
   Clipboard = 'Clipboard',
   Hyperlink = 'Hyperlink',
-  ClearFormatting = 'Clear Formatting',
-  InsertElements = 'Insert Elements',
+  ClearFormatting = 'ClearFormatting',
+  InsertElements = 'InsertElements',
   Print = 'Print',
   UndoRedoHistory = 'Undo/Redo',
 }
@@ -25,28 +25,29 @@ export enum TextFormattingSubType {
   Strikethrough = 'Strikethrough',
   Subscript = 'Subscript',
   Superscript = 'Superscript',
-  TextColor = 'Text Color',
-  BackgroundColor = 'Background Color',
-  FontFamily = 'Font Family',
-  FontSize = 'Font Size',
+  TextColor = 'TextColor',
+  BackgroundColor = 'BackgroundColor',
+  FontFamily = 'FontFamily',
+  FontSize = 'FontSize',
+  FontHeight = 'FontHeight',
 }
 
 export enum TextAlignmentSubType {
-  LeftAlign = 'Left Align',
-  CenterAlign = 'Center Align',
-  RightAlign = 'Right Align',
+  LeftAlign = 'LeftAlign',
+  CenterAlign = 'CenterAlign',
+  RightAlign = 'RightAlign',
   Justify = 'Justify',
 }
 
 export enum ListsSubType {
-  OrderedList = 'Ordered List',
-  UnorderedList = 'Unordered List',
+  OrderedList = 'OrderedList',
+  UnorderedList = 'UnorderedList',
 }
 
 // Interfaces
 
 export type SubTypeGroup = TextFormattingSubType | TextAlignmentSubType | ListsSubType
-type EditorSettingsIns = SingleButtonIns[]
+export type EditorSettingsIns = (SingleButtonIns & ModalButtonIns)[]
 
 // default settings
 export interface SetUpSetting {

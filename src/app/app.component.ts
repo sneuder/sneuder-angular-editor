@@ -12,8 +12,8 @@ export class AppComponent {
     this.setUpService.setUp({
       editorSettings: {},
       toolBarButtonsSelected: {
-        TextFormatting: ['Bold'],
         TextAlignment: ['Justify'],
+        TextFormatting: ['Bold', 'FontHeight', 'Italic', 'TextColor'],
         Lists: [],
       },
     })
