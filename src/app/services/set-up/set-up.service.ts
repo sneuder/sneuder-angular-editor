@@ -3,7 +3,12 @@ import { Injectable } from '@angular/core'
 import { StoreService } from '../store/store.service'
 
 import { singleButtonsIns } from 'src/app/instructions/single-button.ins'
-import SetUpSetting, { SetUpWorkSpaceDev } from 'src/app/interface/set-up.interface'
+import SetUpSetting, {
+  SetUpWorkSpaceDev,
+  SetUpInputDev,
+  SetUpInputDevOptional,
+  SubTypeGroup,
+} from 'src/app/interface/set-up.interface'
 
 @Injectable({
   providedIn: 'root',
@@ -16,36 +21,75 @@ export class SetUpService {
     toolBarButtons: [],
   }
 
+  // what the dev wants to setting
+  private setUpInputDev: SetUpInputDev = {
+    editorSettings: {},
+    toolBarButtonsSelected: {
+      TextFormatting: [],
+      TextAlignment: [],
+      Lists: [],
+    },
+  }
+
+  // section to manage the buttons
   private setUpWorkSpaceDev: SetUpWorkSpaceDev = {
     toolBarButtons: {
       TextFormatting: [],
       TextAlignment: [],
       Lists: [],
     },
-    toolBarButtonsSelected: {},
   }
 
   constructor(private storeService: StoreService) {}
 
-  public setUp() {
-    this.setDefaultSetUp()
-  }
+  public setUp(setUpDev?: SetUpInputDevOptional) {
+    if (setUpDev) this.setSetUpEditor(setUpDev)
 
-  private setDefaultSetUp() {
-    if (this.setUpWorkSpaceDev.toolBarButtons === undefined) return
-
-    this.groupToolbarIns.forEach((button) => {
-      if (this.setUpWorkSpaceDev.toolBarButtons === undefined) return
-
-      const indexType = button.type as keyof typeof this.setUpWorkSpaceDev.toolBarButtons
-      this.setUpWorkSpaceDev.toolBarButtons[indexType].push(button)
-    })
+    if (setUpDev?.toolBarButtonsSelected) {
+      this.setDevSetUp()
+    } else {
+      this.setDefaultSetUp()
+    }
 
     this.concatButtons()
     this.saveSetUp()
   }
 
-  private setDevSetUp() {}
+  private setDefaultSetUp() {
+    this.groupToolbarIns.forEach((button) => {
+      const indexType = button.type as keyof typeof this.setUpWorkSpaceDev.toolBarButtons
+      this.setUpWorkSpaceDev.toolBarButtons[indexType].push(button)
+    })
+  }
+
+  private setDevSetUp() {
+    this.groupToolbarIns.forEach((button) => {
+      const checkType = button.type as keyof typeof this.setUpInputDev.toolBarButtonsSelected
+      const checkSubType = button.subType
+
+      const subTypeGroup = this.setUpInputDev.toolBarButtonsSelected[checkType] as SubTypeGroup[]
+
+      if (subTypeGroup.includes(checkSubType)) {
+        this.setUpWorkSpaceDev.toolBarButtons[checkType].push(button)
+      }
+    })
+  }
+
+  private setSetUpEditor(setUpDev: SetUpInputDevOptional) {
+    if (setUpDev.editorSettings) {
+      this.setUpSetting.editorSettings = {
+        ...this.setUpSetting.editorSettings,
+        ...setUpDev.editorSettings,
+      }
+    }
+
+    if (setUpDev.toolBarButtonsSelected) {
+      this.setUpInputDev.toolBarButtonsSelected = {
+        ...this.setUpInputDev.toolBarButtonsSelected,
+        ...setUpDev.toolBarButtonsSelected,
+      }
+    }
+  }
 
   private concatButtons() {
     if (this.setUpWorkSpaceDev.toolBarButtons === undefined) return

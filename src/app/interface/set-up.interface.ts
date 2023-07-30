@@ -1,5 +1,7 @@
 import SingleButtonIns from './instructions/single-button.interface'
 
+// Type
+
 export enum TextEditorGroupType {
   TextFormatting = 'TextFormatting',
   TextAlignment = 'TextAlignment',
@@ -13,6 +15,8 @@ export enum TextEditorGroupType {
   Print = 'Print',
   UndoRedoHistory = 'Undo/Redo',
 }
+
+// SubTypes
 
 export enum TextFormattingSubType {
   Bold = 'Bold',
@@ -34,40 +38,49 @@ export enum TextAlignmentSubType {
   Justify = 'Justify',
 }
 
-// enum TextIndentationSubType {
-//   IncreaseIndent = 'Increase Indent',
-//   DecreaseIndent = 'Decrease Indent',
-// }
-
 export enum ListsSubType {
   OrderedList = 'Ordered List',
   UnorderedList = 'Unordered List',
 }
 
-// enum InsertElementsSubType {
-//   InsertImage = 'Insert Image',
-//   InsertTable = 'Insert Table',
-//   InsertHorizontalRule = 'Insert Horizontal Rule',
-// }
+// Interfaces
 
 export type SubTypeGroup = TextFormattingSubType | TextAlignmentSubType | ListsSubType
 type EditorSettingsIns = SingleButtonIns[]
 
+// default settings
 export interface SetUpSetting {
   editorSettings: {}
   toolBarButtons: EditorSettingsIns
 }
 
+// toolBarsSelected
+
+export interface ToolBarButtonsSelected {
+  [TextEditorGroupType.TextFormatting]: (keyof typeof TextFormattingSubType)[]
+  [TextEditorGroupType.TextAlignment]: (keyof typeof TextAlignmentSubType)[]
+  [TextEditorGroupType.Lists]: (keyof typeof ListsSubType)[]
+}
+
+export interface ToolBarButtonsSelectedOptional extends Partial<ToolBarButtonsSelected> {}
+
+export interface SetUpInputDev {
+  editorSettings: {}
+  toolBarButtonsSelected: ToolBarButtonsSelected
+}
+
+export interface SetUpInputDevOptional {
+  editorSettings?: {}
+  toolBarButtonsSelected?: ToolBarButtonsSelectedOptional
+}
+
+//...
+
 export interface SetUpWorkSpaceDev {
-  toolBarButtons?: {
+  toolBarButtons: {
     [TextEditorGroupType.TextFormatting]: EditorSettingsIns
     [TextEditorGroupType.TextAlignment]: EditorSettingsIns
     [TextEditorGroupType.Lists]: EditorSettingsIns
-  }
-  toolBarButtonsSelected?: {
-    [TextEditorGroupType.TextFormatting]?: SubTypeGroup
-    [TextEditorGroupType.TextAlignment]?: SubTypeGroup
-    [TextEditorGroupType.Lists]?: SubTypeGroup
   }
 }
 

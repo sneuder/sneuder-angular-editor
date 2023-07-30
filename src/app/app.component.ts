@@ -8,6 +8,14 @@ import { SetUpService } from './services/set-up/set-up.service'
 })
 export class AppComponent {
   constructor(private setUpService: SetUpService) {
-    this.setUpService.setUp()
+    // temp
+    this.setUpService.setUp({
+      editorSettings: {},
+      toolBarButtonsSelected: {
+        TextFormatting: ['Bold'],
+        TextAlignment: ['Justify'],
+        Lists: [],
+      },
+    })
   }
 }
