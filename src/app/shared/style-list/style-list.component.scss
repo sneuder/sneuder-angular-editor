@@ -1,0 +1,10 @@
+ul {
+  list-style-position: inside;
+  list-style-type: none;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+
+  cursor: pointer;
+}

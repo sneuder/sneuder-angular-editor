@@ -6,15 +6,17 @@ interface ModalButtonIns {
   type: TextEditorGroupType
   subType: SubTypeGroup
   component: typeof ModalButtonComponent
-  setting: {
-    values: {
-      value: string
-      content: string
-    }[]
+  setting: StyleModalSetting
+}
+
+export interface StyleModalSetting {
+  values: {
     value: string
-    style: string
-    service: string
-  }
+    content: string
+  }[]
+  value: string
+  style: string
+  service: string
 }
 
 export default ModalButtonIns
