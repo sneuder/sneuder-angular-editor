@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import ModalButtonIns from 'src/app/interface/instructions/modal-button.interface'
 
 @Component({
@@ -8,6 +8,7 @@ import ModalButtonIns from 'src/app/interface/instructions/modal-button.interfac
 })
 export class ModalButtonComponent {
   @Input() instruction!: ModalButtonIns
+  @Output() setStyle = new EventEmitter<any>()
 
   public modalState = false
   private timeoutModal: any
@@ -28,5 +29,11 @@ export class ModalButtonComponent {
 
   public stopSetTimeOut() {
     clearTimeout(this.timeoutModal)
+  }
+
+  // emit styling
+  public emitSetStyle(valueSelected: string) {
+    this.instruction.setting.value = valueSelected
+    this.setStyle.emit(this.instruction.setting)
   }
 }

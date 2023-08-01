@@ -10,10 +10,10 @@ import SingleButtonIns, {
   styleUrls: ['./single-button.component.scss'],
 })
 export class SingleButtonComponent {
-  @Input() instruction!: SingleButtonIns
-  @Output() setStyle = new EventEmitter<SingleButtonSetting>()
+  @Input() public instruction!: SingleButtonIns
+  @Output() private setStyle = new EventEmitter<SingleButtonSetting>()
 
-  emitSetStyle() {
+  public emitSetStyle() {
     this.setStyle.emit(this.instruction.setting)
   }
 }

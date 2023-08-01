@@ -10,9 +10,16 @@ export const modalButtonsIns: ModalButtonIns[] = [
     subType: TextFormattingSubType.FontHeight,
     component: ModalButtonComponent,
     setting: {
-      values: [{ value: '1.0', content: '1.0' }],
+      values: [
+        { value: '1.0', content: '1.0' },
+        { value: '1.5', content: '1.5' },
+        { value: '2.0', content: '2.0' },
+        { value: '2.5', content: '2.5' },
+        { value: '3.0', content: '3.0' },
+      ],
+      value: '1.0',
       style: 'line-height',
-      service: 'test',
+      service: 'setPlainStyle',
     },
   },
   {
@@ -22,8 +29,9 @@ export const modalButtonsIns: ModalButtonIns[] = [
     component: ModalButtonComponent,
     setting: {
       values: [{ value: '1.0', content: '1.0' }],
+      value: '1.0',
       style: 'line-height',
-      service: 'test',
+      service: 'setPlainStyle',
     },
   },
 ]

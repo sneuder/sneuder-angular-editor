@@ -11,6 +11,7 @@ interface ModalButtonIns {
       value: string
       content: string
     }[]
+    value: string
     style: string
     service: string
   }
