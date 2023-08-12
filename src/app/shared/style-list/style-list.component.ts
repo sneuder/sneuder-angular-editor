@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { StyleModalSetting } from 'src/app/interface/instructions/modal-button.interface'
 
 @Component({
@@ -8,4 +8,9 @@ import { StyleModalSetting } from 'src/app/interface/instructions/modal-button.i
 })
 export class StyleListComponent {
   @Input() public styleModalSetting!: StyleModalSetting
+  @Output() private setStyle = new EventEmitter<any>()
+
+  public emitSetStyle(valueStyle: string) {
+    this.setStyle.emit(valueStyle)
+  }
 }

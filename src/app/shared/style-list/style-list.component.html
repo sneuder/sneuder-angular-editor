@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let options of styleModalSetting.values">{{ options.value }}</li>
+  <li *ngFor="let option of styleModalSetting.values" (click)="emitSetStyle(option.value)">
+    {{ option.content }}
+  </li>
 </ul>
