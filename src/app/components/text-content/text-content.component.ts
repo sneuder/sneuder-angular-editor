@@ -19,11 +19,13 @@ export class TextContentComponent implements AfterViewInit {
       const selectedElement = selection.baseNode.parentElement
 
       this.storeService.setGlobalStore('selectedNode', selectedElement)
-      if (selectedElement.id === 'sneuder-text-area') this.formatFirstWords()
+      if (selectedElement.id === 'sneuder-text-area') {
+        this.storeService.setGlobalStore('selectedNode', this.formatFirstWords())
+      }
     })
   }
 
-  private formatFirstWords(): void {
+  private formatFirstWords(): HTMLDivElement {
     const newDiv = document.createElement('div')
     const firstChild = this.globalStore.selectedNode.firstChild
 
@@ -32,9 +34,10 @@ export class TextContentComponent implements AfterViewInit {
 
     if (secondChild) {
       this.globalStore.selectedNode.insertBefore(newDiv, secondChild)
-      return
+      return newDiv
     }
 
     this.globalStore.selectedNode.appendChild(newDiv)
+    return newDiv
   }
 }

@@ -21,7 +21,10 @@ export class StoreService {
     return this.globalStore
   }
 
-  public setGlobalStore(globalKey: keyof typeof this.globalStore, globalValue: string) {
+  public setGlobalStore(
+    globalKey: keyof typeof this.globalStore,
+    globalValue: string | HTMLDivElement,
+  ) {
     this.globalStore[globalKey] = globalValue
   }
 
