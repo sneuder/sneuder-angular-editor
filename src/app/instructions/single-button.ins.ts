@@ -92,16 +92,18 @@ export const singleButtonsIns: SingleButtonIns[] = [
       style: 'textAlign',
     },
   },
-  // {
-  //   icon: 'fas fa-highlighter',
-  //   component: SingleButtonComponent,
-  //   setting: {
-  //     service: 'setPlainStyle',
-  //     value: '#F1E740',
-  //     revert: 'none',
-  //     style: 'backgroundColor',
-  //   },
-  // },
+  {
+    icon: 'fas fa-highlighter',
+    type: TextEditorGroupType.TextFormatting,
+    subType: TextFormattingSubType.TextHighlighted,
+    component: SingleButtonComponent,
+    setting: {
+      service: 'setPlainStyle',
+      value: 'rgb(241, 231, 64)',
+      revert: 'rgb(255, 255, 255)',
+      style: 'backgroundColor',
+    },
+  },
   {
     icon: 'fas fa-list-ul',
     type: TextEditorGroupType.Lists,

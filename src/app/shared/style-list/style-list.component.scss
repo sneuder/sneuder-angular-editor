@@ -1,6 +1,7 @@
 ul {
   list-style-position: inside;
   list-style-type: none;
+  white-space: nowrap;
 
   display: grid;
   grid-template-columns: 1fr;

@@ -26,6 +26,7 @@ export enum TextFormattingSubType {
   Subscript = 'Subscript',
   Superscript = 'Superscript',
   TextColor = 'TextColor',
+  TextHighlighted = 'TextHighlighted',
   BackgroundColor = 'BackgroundColor',
   FontFamily = 'FontFamily',
   FontSize = 'FontSize',
