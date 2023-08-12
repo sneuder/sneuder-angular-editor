@@ -23,10 +23,6 @@ export class TextContentComponent implements AfterViewInit {
     })
   }
 
-  public saveTextContent(event: any) {
-    this.storeService.setGlobalStore('textContent', event.target.innerHTML)
-  }
-
   private formatFirstWords(): void {
     const newDiv = document.createElement('div')
     const firstChild = this.globalStore.selectedNode.firstChild

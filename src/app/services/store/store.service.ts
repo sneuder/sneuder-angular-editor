@@ -8,7 +8,6 @@ import SetUpSetting from 'src/app/interface/set-up.interface'
 })
 export class StoreService {
   private globalStore: GlobalStore = {
-    textContent: '',
     selectedNode: '' as any,
     setUpSetting: {
       editorSettings: {},
