@@ -57,10 +57,10 @@ ifneq ($(shell docker ps -aq -f name=$(CONTAINER_NAME)),)
 	@docker start -a $(CONTAINER_NAME)
 else
 	@echo "Container $(CONTAINER_NAME) not found. Building and running..."
-	@make remove-container
-	@make remove-image
-	@make build-image
-	@make build-container-bind
+	@make -s remove-container
+	@make -s remove-image
+	@make -s build-image
+	@make -s build-container-bind
 endif
 
 run-dev-restart: set-mode remove-container remove-image build-image build-container-bind
