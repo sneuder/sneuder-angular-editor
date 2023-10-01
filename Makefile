@@ -41,17 +41,12 @@ stop-container:
 build-container-bind:
 	@docker run --mount "type=bind,source=$(BIND_PATH),target=$(WORKDIR_DOCKER)" -p 3000:4200 --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
-# setting env
-
-set-mode:
-	$(eval MODE = $(MODE_DEV))
-
 # for prod and dev
 
 run-prod: remove-container remove-image build-image build-container
 	@echo "Container running in prod"
 
-run-dev: set-mode
+run-dev:
 ifneq ($(shell docker ps -aq -f name=$(CONTAINER_NAME)),)
 	@echo "Container $(CONTAINER_NAME) running in dev"
 	@docker start -a $(CONTAINER_NAME)
@@ -59,9 +54,8 @@ else
 	@echo "Container $(CONTAINER_NAME) not found. Building and running..."
 	@make -s remove-container
 	@make -s remove-image
-	@make -s build-image
+	@make -s build-image MODE=dev
 	@make -s build-container-bind
 endif
 
-run-dev-restart: set-mode remove-container remove-image build-image build-container-bind
-	@echo "Container $(CONTAINER_NAME) running in dev"
+restart: remove-container remove-image

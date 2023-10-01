@@ -18,6 +18,4 @@ WORKDIR /app
 
 EXPOSE 4200
 
-CMD tail -f /dev/null
-CMD ["npm", "i"]
-CMD ["npm", "start"]
+CMD ["sleep", "infinity"]
