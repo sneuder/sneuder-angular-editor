@@ -59,3 +59,6 @@ else
 endif
 
 restart: remove-container remove-image
+
+set-up:
+	chmod +x .husky/pre-commit
