@@ -1,0 +1,8 @@
+{
+  "name": "sneudereditor",
+  "image": "node:16.20.1",
+  "tools": ["git"],
+  "networks": [],
+  "ports": [],
+  "databases": []
+}
